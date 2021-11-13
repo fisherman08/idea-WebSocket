@@ -6,7 +6,9 @@ import com.jetbrains.rd.util.remove
 class WebSocketProperties {
     private val propertiesComponent = PropertiesComponent.getInstance()
 
-    private val KEY_URL = "com.github.fisherman08.idea_websocket.KEY_URL"
+    companion object {
+        private const val KEY_URL = "com.github.fisherman08.idea_websocket.KEY_URL"
+    }
 
     fun getUrls(): Array<String> = propertiesComponent.getValues(KEY_URL)?: emptyArray()
 
@@ -15,5 +17,4 @@ class WebSocketProperties {
         urls.remove(url)
         propertiesComponent.setValues(KEY_URL, arrayOf(url) + urls)
     }
-
 }

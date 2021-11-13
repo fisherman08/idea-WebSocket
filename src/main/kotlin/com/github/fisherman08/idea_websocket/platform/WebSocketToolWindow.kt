@@ -159,18 +159,16 @@ class WebSocketToolWindow {
                     }
                 }
             }
-
         }
     }
 }
 
-val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
-
-fun JBTextArea.addMessage(message: String) {
+private fun JBTextArea.addMessage(message: String) {
+    val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
     val now = LocalDateTime.now()
     this.append("(${now.format(formatter)}) $message\n")
 }
 
-fun JBTextArea.truncateMessages() {
+private fun JBTextArea.truncateMessages() {
     this.text = ""
 }
