@@ -33,22 +33,7 @@ compileTestKotlin {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version = '2021.1'
-    patchPluginXml {
-        version = '1.0,0'
-        sinceBuild = '211'
-    }
-}
-
-patchPluginXml {
-    version = "1.0.0"
-    sinceBuild = "211"
-    description = """
-    Simple WebSocket client for IntelliJ platform
-    """
-    changeNotes = """
-      (2021/12/29) Release
-      """
+    // version = '2021.1'
 }
 
 publishPlugin {

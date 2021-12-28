@@ -1,11 +1,22 @@
 <idea-plugin>
     <id>com.github.fisherman08.Idea-WebSocket</id>
     <name>WebSocket Client</name>
+    <version>1.0.0</version>
     <vendor url="https://github.com/fisherman08/Idea-WebSocket">fisherman08</vendor>
 
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="211"/>
+
     <description><![CDATA[
-    A simple WebSocket client for IntelliJ platform
+    A simple WebSocket client for IntelliJ platform IDEs.
+    This plugin adds WebSocket panel to your tool window.
+
+    In the panel, you can connect to a WebSocket API and can submit/receive messages.
     ]]></description>
+
+    <change-notes><![CDATA[
+    (2021/12/29) 1.0.0 Release
+    ]]></change-notes>
 
     <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
          on how to target different products -->
