@@ -1,7 +1,5 @@
 # WebSocket Client For IntelliJ Platform
 
-
-A Plugin For IntelliJ Family IDEs to Develop 101NEO SPJ Language
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/fisherman08/Idea-WebSocket/blob/master/LICENSE)
 ![version](https://img.shields.io/badge/Version-1.0.0-red.svg)
 
@@ -22,5 +20,4 @@ MIT License.
 See the LICENSE file.
 
 ## OSS
-TooTallNate / Java-WebSocket
-https://github.com/TooTallNate/Java-WebSocket
+[TooTallNate / Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)
