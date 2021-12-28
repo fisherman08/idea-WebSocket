@@ -13,7 +13,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow id="WebSocket" anchor="bottom"
-                    factoryClass="com.github.fisherman08.idea_websocket.platform.WebSocketToolWindowFactory"/>
+                    factoryClass="com.github.fisherman08.idea_websocket.platform.WebSocketToolWindowFactory" icon="com.github.fisherman08.idea_websocket.platform.PluginIIcons.WindowIcon"/>
     </extensions>
 
     <actions>
