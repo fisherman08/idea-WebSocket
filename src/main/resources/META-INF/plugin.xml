@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.fisherman08.Idea-WebSocket</id>
     <name>WebSocket Client</name>
-    <vendor url="https://github.com/fisherman08">fisherman08</vendor>
+    <vendor url="https://github.com/fisherman08/Idea-WebSocket">fisherman08</vendor>
 
     <description><![CDATA[
     A simple WebSocket client for IntelliJ platform
