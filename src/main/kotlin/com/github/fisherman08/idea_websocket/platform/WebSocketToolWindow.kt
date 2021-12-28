@@ -4,13 +4,12 @@ import com.github.fisherman08.idea_websocket.client.EventHandler
 import com.github.fisherman08.idea_websocket.client.Headers
 import com.github.fisherman08.idea_websocket.client.ServerUri
 import com.github.fisherman08.idea_websocket.client.WebSocketClientImpl
-
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.JBTextArea
-import com.intellij.ui.components.JBTextField
+import com.intellij.ui.layout.CCFlags
 import com.intellij.ui.layout.panel
-import com.intellij.util.ui.UIUtil
 import java.awt.Color
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -25,7 +24,10 @@ class WebSocketToolWindow {
 
     private var client: WebSocketClientImpl? = null
 
-    private val urlField = JBTextField(properties.getUrls().firstOrNull())
+    private val urlHistories = ComboBox(arrayOf("") + properties.getUrls()).apply {
+        isEditable = true
+    }
+
     private val connectButton = JButton("Connect").apply {
         addActionListener { handleConnectButtonClicked() }
     }
@@ -36,7 +38,9 @@ class WebSocketToolWindow {
 
     private val isConnectedLabel = JLabel()
 
-    private val responseArea = JBTextArea(15, 50).apply { isEditable = false }
+    private val responseArea = JBTextArea(15, 50).apply {
+        isEditable = false
+    }
     private val responseAreaScrollPane = JBScrollPane(responseArea)
 
 
@@ -50,7 +54,7 @@ class WebSocketToolWindow {
     private fun handleConnectButtonClicked() {
         try {
             this.client?.close()
-            val url = ServerUri(urlField.text)
+            val url = ServerUri(urlHistories.item)
             val headers = Headers(emptyMap())
             val handler = EventHandler(
                 onOpen = {},
@@ -58,7 +62,7 @@ class WebSocketToolWindow {
                 onError = { e ->
                     logger.warn(e)
                 },
-                onMessage = {message ->  responseArea.addMessage("Response => $message") }
+                onMessage = {message ->  responseArea + "Response =>\n$message"}
             )
             this.client = WebSocketClientImpl(url, headers, handler)
 
@@ -81,13 +85,13 @@ class WebSocketToolWindow {
     }
 
     private fun handleSendMessageButtonClicked() {
-        responseArea.addMessage("Request => ${requestArea.text}")
+        responseArea + "Request =>\n${requestArea.text}"
         this.client?.send(requestArea.text)
     }
 
     private fun handleConnectionSuccess() {
-        properties.setUrl(urlField.text)
-        isConnectedLabel.text = "Connected"
+        properties.setUrl(urlHistories.item)
+        isConnectedLabel.text = "Connected to ${urlHistories.item}"
         isConnectedLabel.foreground = Color.GREEN
         connectButton.isEnabled = false
         disconnectButton.isEnabled = true
@@ -112,14 +116,13 @@ class WebSocketToolWindow {
     fun getComponent(): JComponent {
         return panel {
             row {
-                cell {
-                    label("URL: ", UIUtil.ComponentStyle.REGULAR, bold = true)
-                    urlField()
+                label("URL: ", bold = true)
+            }
+            row {
+                cell(isFullWidth = true) {
+                    urlHistories(CCFlags.growX, CCFlags.pushX)
                     connectButton()
                     disconnectButton()
-                }
-                cell {
-                    label("")
                 }
             }
             row {
@@ -132,6 +135,7 @@ class WebSocketToolWindow {
             }
             row {
                 row {
+
                     cell {
                         label("Responses from server")
                     }
@@ -144,7 +148,7 @@ class WebSocketToolWindow {
                         responseAreaScrollPane()
                     }
                     cell {
-                        requestArea()
+                        requestArea(CCFlags.growX, CCFlags.pushX, CCFlags.growY, CCFlags.pushY)
                     }
                 }
             }
@@ -163,10 +167,10 @@ class WebSocketToolWindow {
     }
 }
 
-private fun JBTextArea.addMessage(message: String) {
+private operator fun JBTextArea.plus(message: String) {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
     val now = LocalDateTime.now()
-    this.append("(${now.format(formatter)}) $message\n")
+    this.append("(${now.format(formatter)}) $message\n\n")
 }
 
 private fun JBTextArea.truncateMessages() {
