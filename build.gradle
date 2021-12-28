@@ -35,12 +35,18 @@ compileTestKotlin {
 intellij {
     version = '2021.1'
     patchPluginXml {
-        version = '0.1.0'
+        version = '1.0,0'
         sinceBuild = '211'
     }
 }
+
 patchPluginXml {
+    version = "1.0.0"
+    sinceBuild = "211"
+    description = """
+    Simple WebSocket client for IntelliJ platform
+    """
     changeNotes = """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      (2021/12/29) Release
+      """
 }

@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.fisherman08.Idea-WebSocket</id>
-    <name>Idea WebSocket</name>
+    <name>WebSocket Client</name>
     <vendor url="https://github.com/fisherman08">fisherman08</vendor>
 
     <description><![CDATA[
