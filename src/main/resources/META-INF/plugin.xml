@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.fisherman08.Idea-WebSocket</id>
     <name>WebSocket Client</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <vendor url="https://github.com/fisherman08/Idea-WebSocket">fisherman08</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -15,6 +15,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
+    (2021/12/30) 1.0.1 fix platform version
     (2021/12/29) 1.0.0 Release
     ]]></change-notes>
 

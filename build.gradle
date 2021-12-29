@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.fisherman08'
-version '1.0.0'
+version '1.0.1'
 
 sourceCompatibility = 1.8
 
@@ -33,7 +33,8 @@ compileTestKotlin {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    // version = '2021.1'
+    version = '2021.1'
+    updateSinceUntilBuild = false
 }
 
 publishPlugin {
